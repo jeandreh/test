@@ -1,0 +1,82 @@
+<div class="container">
+	<div class="row" id="product-description">
+		<div class="col-md-2">
+		  	<a href="">
+		  		<img class="media-object product-image" src="./images/black_coffee.jpg" width="128px"></img>
+		  	</a>
+		</div>
+		<div class="col-md-10">
+	    	<h1>Black Coffee</h1>
+			<isteven-multi-select    
+    			input-model="categories"    
+			    output-model="selectedCategories"
+			    button-label="name"
+			    item-label="name"
+			    tick-property="ticked"
+			    translation="categoriesLocalLang">
+			</isteven-multi-select>
+		</div>
+	</div>
+	<div class="row" id="spacer">
+		<span>&nbsp</span>
+	</div>
+	<div class="row" id="product-composition">
+		<h2>Composition</h2>
+		<isteven-multi-select    
+			input-model="ingredients"    
+		    output-model="selectedIngredients"
+		    button-label="name"
+		    item-label="name"
+		    tick-property="ticked"
+		    max-labels="2"
+		    translation="ingredientsLocalLang">
+		</isteven-multi-select>
+		<button type="submit" 
+				class="btn btn-default" 
+				ng-click="showIngredientModal()">Add new...</button>
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+   				<span class="panel-title">Ingredients</span>
+  			</div>
+			<div class="panel-body">
+				<h4>
+					<span class="label label-primary ingredient" 
+						ng-repeat="ingredient in selectedIngredients" 
+						id="ingredient-{{$index}}">
+						{{ingredient.name}}&nbsp;<a class="glyphicon glyphicon-remove-circle" ng-click="deselectIngredient({{$index}},ingredient)"></a>
+					</span>
+				</h4>
+			</div>
+		</div>
+	</div>
+	<div class="row" id="product-options">
+		<h2>Sales Options</h2>
+		<form>
+			<button type="submit" 
+				class="btn btn-default"
+				ng-click="showOptionModal();">Add Option</button>
+		</form>
+		<div class="panel panel-default">
+			 <div class="panel-body">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Cost</th>
+							<th>Price</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="option in salesOptions">
+							<td>{{option.name}}</td>
+							<td>{{option.description}}</td>
+							<td>{{option.cost}}</td>
+							<td>{{option.price}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

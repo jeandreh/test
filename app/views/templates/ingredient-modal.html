@@ -1,0 +1,33 @@
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="$hide()">&times;</button>
+        <h4 class="modal-title">Add New Ingredient</h4>
+      </div>
+
+      <form role="form" id="add-stock" name="ingredientForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="ingredient-name">Name</label>
+            <input type="text"
+              class="form-control"
+              id="ingredent-name"
+              placeholder="Ingredient Name"
+              ng-model="newIngredient.name"
+              required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit"
+            class="btn btn-success"
+            ng-click="addIngredient(newIngredient);"
+            ng-disabled="!ingredientForm.$valid">Add</button>
+          <button type="button"
+            class="btn btn-danger"
+            ng-click="$hide()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

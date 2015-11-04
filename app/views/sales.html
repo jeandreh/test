@@ -1,0 +1,59 @@
+<!-- Main Panel -->
+<div id="main-panel" class="container">
+	<div class="row">
+		<!-- Sale Panel -->
+		<div class="col-sm-5 col-md-5">
+			<!-- Payment Menu -->
+			<div id="total-panel" class="row well">
+				<h3>Total:</h3>
+				<h1 class="text text-right">{{total | currency: 'R$' }}</h1>
+				<h3>Payment:</h3>
+				<ul class="list-inline">
+					<li><button class="btn btn-primary">Credit</button></li>
+					<li><button class="btn btn-primary">Debit</button></li>
+					<li><button class="btn btn-primary">Cash</button></li>
+					<li><button class="btn btn-primary">...</button></li>
+				</ul>
+			</div>
+			<!-- Items List -->
+			<div id="items-list-panel" class="row panel panel-default"> 
+				<div class="panel-heading"><span class="panel-title">Item List</span></div>
+			 	<div class="panel-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Item</th>
+								<th>Qty</th>
+								<th>Price</th>
+								<th>Total</th>
+								<th>Options</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr id="item_$index" ng-repeat="item in itemList">
+								<td>{{item.code}}</td>
+								<td>{{item.name}}</td>
+								<td>{{item.qty}}</td>
+								<td>{{item.price | number:2}}</td>
+								<td>{{(item.price * item.qty) | number:2}}</td>
+								<td>
+									<button type="button" ng-click="itemList.removeItem(item.code)" class="btn btn-xs btn-default">
+										<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+									</button>
+									<button type="button" ng-click="itemList.removeAll(item.code)" class="btn btn-xs btn-default">
+										<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!-- Product Boards -->
+		<div id="product-boards-panel" class="col-sm-7 col-md-7">
+			<product-boards></product-boards>
+		</div>
+	</div>
+</div>

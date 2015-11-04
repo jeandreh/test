@@ -1,0 +1,30 @@
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			 <button type="button" class="navbar-toggle"
+                data-toggle="collapse" data-target="#product-board">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+		</div>
+		<div class="navbar-collapse collapse" id="product-board">
+			<ul class="nav navbar-nav">
+				<li ng-class="{active: isSelected($index)}" 
+					ng-repeat="board in productBoards" id="tab_{{$index}}">
+					<a href="" ng-click="setCurrentTab($index)">{{board.name}}</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="row placeholders" ng-repeat="board in productBoards" 
+	ng-show="isSelected($index)" id="board_{{$index}}">
+	<div class="col-xs-6 col-sm-3 placeholder" ng-repeat="pCode in board.products">
+		<a href="" ng-click="addProduct(products[pCode])" class="thumbnail">
+			<img class="img img-rounded img-responsive" ng-src="{{products[pCode].image}}">
+			<h4 class="text text-center">{{products[pCode].name}}</h4>
+		</a>
+	</div>
+</div>
